@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smit Mayani | Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 2rem 5%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .job-title, .project-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--primary-color);
+        }
+
+        .date-location {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            font-weight: bold;
+        }
+
+        ul {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+        }
+
+        a {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav a {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Smit Mayani</h1>
+        <nav>
+            <a href="#profil">Profil</a>
+            <a href="#kompetenzen">Kompetenzen</a>
+            <a href="#erfahrung">Berufserfahrung</a>
+            <a href="#projekte">Projekte</a>
+            <a href="#ausbildung">Ausbildung</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="profil">
+            <h2>Profil</h2>
+            <div class="contact-info">
+                <span>📍 München, Deutschland</span>
+                <span>📞 (176) 6400 2406</span>
+                <span>✉️ smitmayani123@gmail.com</span>
+                <span>🔗 <a href="https://linkedin.com/in/smitmayani/" target="_blank">LinkedIn</a></span>
+            </div>
+            <p>Ein hoch analytischer Datenprofi mit einem Master-Abschluss in Data Analytics und nachweislicher Erfahrung im Logistik- und Betriebsdatenmanagement. Versiert in SQL, Tableau, Power BI und n8n, kombiniert mit praktischer Erfahrung in Data Warehousing, ETL-Prozessen und prädiktiver Modellierung belegt durch ein Bitcoin-Preisvorhersage Projekt, das einen Root Mean Squared Error von 0,05 erreichte. Zielstrebig ist die Verbesserung der betrieblichen Effizienz, der Reduzierung von Lieferzeiten und der Unterstützung datengesteuerter Entscheidungsfindung.</p>
+        </section>
+
+        <section id="kompetenzen">
+            <h2>Kompetenzen</h2>
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-category">Programming</div>
+                    <p>Python, SQL</p>
+                </div>
+                <div>
+                    <div class="skill-category">Tools/Visualization</div>
+                    <p>Excel, Tableau, Power BI, n8n, Make, Notion, Jira, GitHub</p>
+                </div>
+                <div>
+                    <div class="skill-category">Database</div>
+                    <p>MySQL, BigQuery, AWS (S3, Athena, EC2), Docker</p>
+                </div>
+                <div>
+                    <div class="skill-category">Sprachen</div>
+                    <p>Englisch (Volle professionelle Kompetenz), Deutsch (Begrenzte Arbeitskenntnisse), Hindi / Gujarati (Muttersprache)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="erfahrung">
+            <h2>Berufserfahrung</h2>
+            
+            <div class="job">
+                <div class="job-title">Data Manager | Westwing</div>
+                <div class="date-location">München, Deutschland | Sep. 2025 - Heute</div>
+                <ul>
+                    <li><strong>Carrier-Performance-Reporting:</strong> Erstellung regelmäßiger Performance-Berichte für externe Last-Mile-Carrier in über 14 Ländern zur Überwachung der Lieferqualität.</li>
+                    <li><strong>KPI-Management & Dashboards:</strong> Wöchentliches und monatliches Reporting logistischer Kennzahlen sowie Unterstützung bei der Konzeption und Entwicklung von Analyse-Dashboards.</li>
+                    <li><strong>Profitabilitätsanalyse:</strong> Durchführung von Analysen zur Wirtschaftlichkeit verschiedener Last-Mile-Partner, einschließlich 3PL-Anbietern und dem internen Westwing Delivery Service.</li>
+                    <li><strong>Datenmigration & SQL:</strong> Aktive Mitarbeit bei der Migration der SaaS-Operations des Westwing Delivery Service in eine strukturierte Snowflake-Datenbank unter Nutzung von SQL-Kenntnissen.</li>
+                </ul>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
+
+            <div class="job">
+                <div class="job-title">Working Student - Logistics & Data Management | SCA Fulfillment Center</div>
+                <div class="date-location">Reichertshofen, Deutschland | Mär. 2024 - Bis heute</div>
+                <ul>
+                    <li>Entwicklung und Pflege von Dashboards zur Visualisierung des täglichen Paket Managements, was zu einer Reduzierung der Lieferzeit um 15% führte.</li>
+                    <li>Nutzung analytischer Tools zur Verfolgung und Optimierung von Logistikprozessen im Zusammenhang mit Fulfillment, Werbemitteln und Online-Shop-Logistik.</li>
+                    <li>Beitrag zu datengesteuerten Lösungen für Lagerhaltung, Auftrags-Reaktionszeiten und die Integration von Shop-/Warenwirtschaftssystemen.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projekte">
+            <h2>Ausgewählte Projekte</h2>
+
+            <div class="project">
+                <div class="project-title">SQL Data Warehouse & ETL Project</div>
+                <div class="date-location">Dez. 2024 - Mär. 2025</div>
+                <ul>
+                    <li><strong>Medallion-Architektur:</strong> Aufbau eines SQL Data Warehouse zur Verbesserung der Analysen.</li>
+                    <li><strong>SQL ETL-Pipelines:</strong> Entwicklung zur Datenbereinigung und Transformation.</li>
+                    <li><strong>DBT & Power BI:</strong> Einsatz für Datenmodellierung und Visualisierung.</li>
+                </ul>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
+
+            <div class="project">
+                <div class="project-title">Bitcoin Price Prediction using Machine Learning</div>
+                <div class="date-location">Nov. 2024 - Feb. 2025</div>
+                <ul>
+                    <li>Entwicklung eines prädiktiven Modells in Python unter Verwendung von Random Forest, Linearer Regression und KNN zur Prognose von Bitcoin-Preisen, wobei ein Root Mean Squared Error (RMSE) von 0.05 erreicht wurde und ein Basislinien Modell um 20% übertroffen wurde.</li>
+                    <li>Anwendung von LASSO zur Merkmalsauswahl, wodurch die Anzahl der Eingabevariablen um 30% reduziert und das Modell Interpretierbarkeit verbessert wurde.</li>
+                    <li>Durch eine rigorose Leistungsbewertung, die die Fähigkeit des Modells zur Erfassung von 80% der Marktvolatilität demonstrierte.</li>
+                </ul>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
+
+            <div class="project">
+                <div class="project-title">Hospitality KPI Analysis with Power BI</div>
+                <div class="date-location">Mär. 2024 - Nov. 2024</div>
+                <ul>
+                    <li>Herausforderungen in der Hotelbranche durch umfassende KPI-Analyse mit Power BI gelöst.</li>
+                    <li>Entwicklung eines dynamischen Dashboards, das verschiedene Datensätze integriert und Echtzeit-Einblicke in operative Kennzahlen und finanzielle Performance bietet.</li>
+                    <li>Identifizierung wichtiger Bereiche mit Verbesserungspotenzial, was zu fundierten Entscheidungen und potenziellem Umsatzwachstum beitrug.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="ausbildung">
+            <h2>Ausbildung</h2>
+
+            <div class="job">
+                <div class="job-title">Masterabschluss, M.Sc. Data Analytics | Berlin School of Business & Innovation</div>
+                <div class="date-location">Berlin, Deutschland | Okt. 2024 - Bis heute</div>
+                <ul>
+                    <li>Absolvierung eines Masterstudiums in Data Analytics mit Schwerpunkt auf maschinellem Lernen, statistischer Analyse und Business Intelligence.</li>
+                    <li>Entwicklung von Fähigkeiten in SQL, Tableau, Power BI und prädiktiver Modellierung durch praktische Projekte.</li>
+                </ul>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
+
+            <div class="job">
+                <div class="job-title">Bachelorabschluss, B.Sc. Information Technology | Sarvepalli Radhakrishnan University</div>
+                <div class="date-location">Madhya Pradesh, Indien | Apr. 2018 - Mär. 2021</div>
+                <ul>
+                    <li>Studium in Programmierung, Datenbank Management, Netzwerktechnik, Softwareentwicklung.</li>
+                    <li>Abschluss von Projekten mit Fokus auf Datenmanagement und Anwendungsentwicklung.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
