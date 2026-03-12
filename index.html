@@ -1,266 +1,762 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smit Mayani | Portfolio</title>
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --bg-color: #f8fafc;
-            --text-color: #1e293b;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smit Mayani — Data Analytics Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1d3461;
+    --blue: #1e5fa8;
+    --blue-bright: #2979d0;
+    --accent: #4fc3f7;
+    --accent-gold: #f0c040;
+    --text: #e8edf5;
+    --text-muted: #8fa3bf;
+    --text-dim: #4a6080;
+    --surface: #0f1e36;
+    --surface-up: #162844;
+    --border: rgba(79,195,247,0.15);
+    --glow: rgba(41,121,208,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+  /* ── BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 10% 20%, rgba(30,95,168,0.22) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(79,195,247,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 60% at 50% 50%, rgba(17,34,64,0.8) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
-        header {
-            background-color: var(--card-bg);
-            padding: 2rem 5%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
 
-        header h1 {
-            margin: 0;
-            color: var(--primary-color);
-        }
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            margin-left: 1.5rem;
-            font-weight: 500;
-        }
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 5% 5rem;
+  }
+  .hero-inner { max-width: 800px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+    margin-bottom: 1.4rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 36px; height: 2px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.4rem;
+  }
+  h1 span { color: var(--accent); }
+  .hero-desc {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: all 0.25s;
+  }
+  .btn-primary {
+    background: var(--blue-bright);
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(41,121,208,0.35);
+  }
+  .btn-primary:hover {
+    background: var(--accent);
+    color: var(--navy);
+    box-shadow: 0 6px 32px rgba(79,195,247,0.4);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn-outline:hover {
+    background: rgba(79,195,247,0.1);
+    transform: translateY(-2px);
+  }
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--accent); line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.05em; margin-top: 0.3rem; }
 
-        nav a:hover {
-            color: var(--primary-color);
-        }
+  /* ── SECTION TITLES ── */
+  .section-wrap { padding: 7rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 0.8rem;
+  }
+  .section-label::before {
+    content: ''; width: 28px; height: 2px; background: var(--accent);
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; color: var(--text);
+    margin-bottom: 3.5rem;
+    letter-spacing: -0.01em;
+  }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+  /* ── ABOUT ── */
+  #about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-text p {
+    color: var(--text-muted); font-size: 1.02rem; margin-bottom: 1.2rem;
+    font-weight: 300; line-height: 1.9;
+  }
+  .about-info { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.8rem; }
+  .info-row { display: flex; gap: 1rem; align-items: baseline; }
+  .info-key { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; min-width: 90px; }
+  .info-val { color: var(--text-muted); font-size: 0.95rem; }
+  .about-highlight {
+    background: var(--surface-up);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .about-highlight h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .about-highlight p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
 
-        section {
-            margin-bottom: 3rem;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
+  /* ── SKILLS ── */
+  #skills { background: var(--navy); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.8rem;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px var(--glow);
+  }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .skill-card h3 { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    padding: 0.3rem 0.8rem;
+    background: rgba(41,121,208,0.15);
+    border: 1px solid rgba(41,121,208,0.3);
+    border-radius: 3px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
 
-        h2 {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--surface); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--blue), transparent);
+  }
+  .timeline-item { position: relative; margin-bottom: 3.5rem; padding-left: 2rem; }
+  .timeline-dot {
+    position: absolute; left: -2.4rem; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--navy);
+    box-shadow: 0 0 0 3px rgba(79,195,247,0.2);
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .exp-title { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+  .exp-date {
+    font-size: 0.78rem; letter-spacing: 0.06em;
+    color: var(--accent); font-weight: 600;
+    background: rgba(79,195,247,0.1);
+    padding: 0.25rem 0.8rem; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .exp-company { font-size: 0.88rem; color: var(--blue-bright); font-weight: 500; margin-bottom: 1rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    position: relative; padding-left: 1.2rem;
+    color: var(--text-muted); font-size: 0.93rem;
+    margin-bottom: 0.5rem; line-height: 1.7;
+  }
+  .exp-bullets li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.75rem; top: 0.25rem;
+  }
 
-        .contact-info {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            color: #64748b;
-        }
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.8rem; }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex; flex-direction: column;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .project-card:hover { border-color: rgba(79,195,247,0.3); transform: translateY(-5px); box-shadow: 0 12px 40px var(--glow); }
+  .project-card:hover::before { opacity: 1; }
+  .project-cat {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 0.7rem;
+  }
+  .project-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.8rem; line-height: 1.4; }
+  .project-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; flex: 1; margin-bottom: 1.4rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-badge {
+    padding: 0.2rem 0.65rem;
+    background: rgba(30,95,168,0.2);
+    border: 1px solid rgba(30,95,168,0.4);
+    border-radius: 3px;
+    font-size: 0.72rem; color: var(--accent); font-weight: 500;
+  }
 
-        .job-title, .project-title {
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 0.2rem;
-            color: var(--primary-color);
-        }
+  /* ── EDUCATION ── */
+  #education { background: var(--surface); }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
+  .edu-card {
+    background: var(--surface-up);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: all 0.2s;
+  }
+  .edu-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .edu-degree { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+  .edu-school { font-size: 0.9rem; color: var(--blue-bright); font-weight: 500; margin-bottom: 0.3rem; }
+  .edu-location { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.8rem; }
+  .edu-date { font-size: 0.75rem; letter-spacing: 0.06em; color: var(--accent); font-weight: 600; background: rgba(79,195,247,0.1); padding: 0.2rem 0.7rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
+  .edu-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
 
-        .date-location {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 1rem;
-        }
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); }
+  .contact-inner { max-width: 680px; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 1.8rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.88rem; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(79,195,247,0.06); transform: translateY(-2px); }
+  .contact-link svg { width: 18px; height: 18px; }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2.5rem 5%;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    background: var(--navy);
+    position: relative; z-index: 1;
+  }
 
-        .skill-category {
-            font-weight: bold;
-        }
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(28px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: none; }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.2s; }
+  .fade-in:nth-child(3) { animation-delay: 0.35s; }
+  .fade-in:nth-child(4) { animation-delay: 0.5s; }
 
-        ul {
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-        }
-
-        a {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav {
-                margin-top: 1rem;
-            }
-            nav a {
-                margin: 0 0.5rem;
-            }
-        }
-    </style>
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { gap: 2rem; }
+    .nav-links { display: none; }
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Smit Mayani</h1>
-        <nav>
-            <a href="#profil">Profil</a>
-            <a href="#kompetenzen">Kompetenzen</a>
-            <a href="#erfahrung">Berufserfahrung</a>
-            <a href="#projekte">Projekte</a>
-            <a href="#ausbildung">Ausbildung</a>
-        </nav>
-    </header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SM.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <div class="container">
-        <section id="profil">
-            <h2>Profil</h2>
-            <div class="contact-info">
-                <span>📍 München, Deutschland</span>
-                <span>📞 (176) 6400 2406</span>
-                <span>✉️ smitmayani123@gmail.com</span>
-                <span>🔗 <a href="https://linkedin.com/in/smitmayani/" target="_blank">LinkedIn</a></span>
-            </div>
-            <p>Ein hoch analytischer Datenprofi mit einem Master-Abschluss in Data Analytics und nachweislicher Erfahrung im Logistik- und Betriebsdatenmanagement. Versiert in SQL, Tableau, Power BI und n8n, kombiniert mit praktischer Erfahrung in Data Warehousing, ETL-Prozessen und prädiktiver Modellierung belegt durch ein Bitcoin-Preisvorhersage Projekt, das einen Root Mean Squared Error von 0,05 erreichte. Zielstrebig ist die Verbesserung der betrieblichen Effizienz, der Reduzierung von Lieferzeiten und der Unterstützung datengesteuerter Entscheidungsfindung.</p>
-        </section>
-
-        <section id="kompetenzen">
-            <h2>Kompetenzen</h2>
-            <div class="skills-grid">
-                <div>
-                    <div class="skill-category">Programming</div>
-                    <p>Python, SQL</p>
-                </div>
-                <div>
-                    <div class="skill-category">Tools/Visualization</div>
-                    <p>Excel, Tableau, Power BI, n8n, Make, Notion, Jira, GitHub</p>
-                </div>
-                <div>
-                    <div class="skill-category">Database</div>
-                    <p>MySQL, BigQuery, AWS (S3, Athena, EC2), Docker</p>
-                </div>
-                <div>
-                    <div class="skill-category">Sprachen</div>
-                    <p>Englisch (Volle professionelle Kompetenz), Deutsch (Begrenzte Arbeitskenntnisse), Hindi / Gujarati (Muttersprache)</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="erfahrung">
-            <h2>Berufserfahrung</h2>
-            
-            <div class="job">
-                <div class="job-title">Data Manager | Westwing</div>
-                <div class="date-location">München, Deutschland | Sep. 2025 - Heute</div>
-                <ul>
-                    <li><strong>Carrier-Performance-Reporting:</strong> Erstellung regelmäßiger Performance-Berichte für externe Last-Mile-Carrier in über 14 Ländern zur Überwachung der Lieferqualität.</li>
-                    <li><strong>KPI-Management & Dashboards:</strong> Wöchentliches und monatliches Reporting logistischer Kennzahlen sowie Unterstützung bei der Konzeption und Entwicklung von Analyse-Dashboards.</li>
-                    <li><strong>Profitabilitätsanalyse:</strong> Durchführung von Analysen zur Wirtschaftlichkeit verschiedener Last-Mile-Partner, einschließlich 3PL-Anbietern und dem internen Westwing Delivery Service.</li>
-                    <li><strong>Datenmigration & SQL:</strong> Aktive Mitarbeit bei der Migration der SaaS-Operations des Westwing Delivery Service in eine strukturierte Snowflake-Datenbank unter Nutzung von SQL-Kenntnissen.</li>
-                </ul>
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
-
-            <div class="job">
-                <div class="job-title">Working Student - Logistics & Data Management | SCA Fulfillment Center</div>
-                <div class="date-location">Reichertshofen, Deutschland | Mär. 2024 - Bis heute</div>
-                <ul>
-                    <li>Entwicklung und Pflege von Dashboards zur Visualisierung des täglichen Paket Managements, was zu einer Reduzierung der Lieferzeit um 15% führte.</li>
-                    <li>Nutzung analytischer Tools zur Verfolgung und Optimierung von Logistikprozessen im Zusammenhang mit Fulfillment, Werbemitteln und Online-Shop-Logistik.</li>
-                    <li>Beitrag zu datengesteuerten Lösungen für Lagerhaltung, Auftrags-Reaktionszeiten und die Integration von Shop-/Warenwirtschaftssystemen.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="projekte">
-            <h2>Ausgewählte Projekte</h2>
-
-            <div class="project">
-                <div class="project-title">SQL Data Warehouse & ETL Project</div>
-                <div class="date-location">Dez. 2024 - Mär. 2025</div>
-                <ul>
-                    <li><strong>Medallion-Architektur:</strong> Aufbau eines SQL Data Warehouse zur Verbesserung der Analysen.</li>
-                    <li><strong>SQL ETL-Pipelines:</strong> Entwicklung zur Datenbereinigung und Transformation.</li>
-                    <li><strong>DBT & Power BI:</strong> Einsatz für Datenmodellierung und Visualisierung.</li>
-                </ul>
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
-
-            <div class="project">
-                <div class="project-title">Bitcoin Price Prediction using Machine Learning</div>
-                <div class="date-location">Nov. 2024 - Feb. 2025</div>
-                <ul>
-                    <li>Entwicklung eines prädiktiven Modells in Python unter Verwendung von Random Forest, Linearer Regression und KNN zur Prognose von Bitcoin-Preisen, wobei ein Root Mean Squared Error (RMSE) von 0.05 erreicht wurde und ein Basislinien Modell um 20% übertroffen wurde.</li>
-                    <li>Anwendung von LASSO zur Merkmalsauswahl, wodurch die Anzahl der Eingabevariablen um 30% reduziert und das Modell Interpretierbarkeit verbessert wurde.</li>
-                    <li>Durch eine rigorose Leistungsbewertung, die die Fähigkeit des Modells zur Erfassung von 80% der Marktvolatilität demonstrierte.</li>
-                </ul>
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
-
-            <div class="project">
-                <div class="project-title">Hospitality KPI Analysis with Power BI</div>
-                <div class="date-location">Mär. 2024 - Nov. 2024</div>
-                <ul>
-                    <li>Herausforderungen in der Hotelbranche durch umfassende KPI-Analyse mit Power BI gelöst.</li>
-                    <li>Entwicklung eines dynamischen Dashboards, das verschiedene Datensätze integriert und Echtzeit-Einblicke in operative Kennzahlen und finanzielle Performance bietet.</li>
-                    <li>Identifizierung wichtiger Bereiche mit Verbesserungspotenzial, was zu fundierten Entscheidungen und potenziellem Umsatzwachstum beitrug.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="ausbildung">
-            <h2>Ausbildung</h2>
-
-            <div class="job">
-                <div class="job-title">Masterabschluss, M.Sc. Data Analytics | Berlin School of Business & Innovation</div>
-                <div class="date-location">Berlin, Deutschland | Okt. 2024 - Bis heute</div>
-                <ul>
-                    <li>Absolvierung eines Masterstudiums in Data Analytics mit Schwerpunkt auf maschinellem Lernen, statistischer Analyse und Business Intelligence.</li>
-                    <li>Entwicklung von Fähigkeiten in SQL, Tableau, Power BI und prädiktiver Modellierung durch praktische Projekte.</li>
-                </ul>
-            </div>
-
-            <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
-
-            <div class="job">
-                <div class="job-title">Bachelorabschluss, B.Sc. Information Technology | Sarvepalli Radhakrishnan University</div>
-                <div class="date-location">Madhya Pradesh, Indien | Apr. 2018 - Mär. 2021</div>
-                <ul>
-                    <li>Studium in Programmierung, Datenbank Management, Netzwerktechnik, Softwareentwicklung.</li>
-                    <li>Abschluss von Projekten mit Fokus auf Datenmanagement und Anwendungsentwicklung.</li>
-                </ul>
-            </div>
-        </section>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow fade-in">Data Analytics Professional</div>
+    <h1 class="fade-in">Smit<br><span>Mayani</span></h1>
+    <p class="hero-desc fade-in">
+      Data Manager & Analytics Engineer based in München — turning complex datasets into actionable business intelligence using SQL, Python, Power BI, and AI automation.
+    </p>
+    <div class="hero-cta fade-in">
+      <a href="#projects" class="btn btn-primary">View My Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
     </div>
+    <div class="hero-stats fade-in">
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">End-to-End Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">14+</div>
+        <div class="stat-label">Countries — Logistics Data</div>
+      </div>
+      <div>
+        <div class="stat-num">$553M</div>
+        <div class="stat-label">Revenue Analysed (BI)</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">About Me</div>
+    <h2>Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a data professional currently working as a <strong style="color:var(--text)">Data Manager at Westwing</strong> in München, with hands-on experience spanning logistics analytics, SQL data engineering, machine learning, and AI workflow automation.
+        </p>
+        <p>
+          Currently pursuing my <strong style="color:var(--text)">M.Sc. in Data Analytics</strong> at Berlin School of Business & Innovation, I combine academic rigour with real-world project delivery — from building SQL data warehouses to automating job applications with LLMs.
+        </p>
+        <p>
+          I'm passionate about the intersection of data engineering and business intelligence, and I enjoy building end-to-end pipelines that make data genuinely useful for decision-makers.
+        </p>
+        <div class="about-info">
+          <div class="info-row">
+            <span class="info-key">Location</span>
+            <span class="info-val">München, Deutschland</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Email</span>
+            <span class="info-val">smitmayani123@gmail.com</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Languages</span>
+            <span class="info-val">English · Deutsch · Hindi · Gujarati</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Status</span>
+            <span class="info-val">Open to Junior Data Analytics Roles</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-highlight">
+        <h3>What I Bring</h3>
+        <p>
+          A rare blend of <strong style="color:var(--accent)">technical depth and business context</strong> — I don't just build dashboards, I understand the operational questions they need to answer. From Medallion Architecture ETL pipelines to real-time Power BI reporting across $553M in hotel revenue, my projects span the full analytics stack.
+        </p>
+        <br>
+        <p>
+          I'm especially interested in roles where data quality, pipeline reliability, and clear visual communication of insights all matter equally.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrap">
+    <div class="section-label">Technical Skills</div>
+    <h2>What I Work With</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h3>Languages & Query</h3>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">T-SQL</span>
+          <span class="tag">DAX</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <h3>Visualisation & BI</h3>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Tableau</span>
+          <span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧠</div>
+        <h3>Machine Learning</h3>
+        <div class="skill-tags">
+          <span class="tag">scikit-learn</span>
+          <span class="tag">pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">matplotlib</span>
+          <span class="tag">Random Forest</span>
+          <span class="tag">LASSO / RFE</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔧</div>
+        <h3>Data Engineering</h3>
+        <div class="skill-tags">
+          <span class="tag">DBT</span>
+          <span class="tag">Snowflake</span>
+          <span class="tag">BigQuery</span>
+          <span class="tag">AWS S3/Athena</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <h3>AI & Automation</h3>
+        <div class="skill-tags">
+          <span class="tag">n8n</span>
+          <span class="tag">Make</span>
+          <span class="tag">Ollama</span>
+          <span class="tag">OpenRouter</span>
+          <span class="tag">LLM Prompting</span>
+          <span class="tag">Agentic AI</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <h3>Infrastructure & Tools</h3>
+        <div class="skill-tags">
+          <span class="tag">Docker</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Notion</span>
+          <span class="tag">Jira</span>
+          <span class="tag">EC2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-label">Work Experience</div>
+    <h2>Career History</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Data Manager</div>
+          <div class="exp-date">Sep 2025 – Present</div>
+        </div>
+        <div class="exp-company">Westwing · München, Deutschland</div>
+        <ul class="exp-bullets">
+          <li>Generating regular carrier performance reports for 14+ countries to monitor last-mile delivery quality.</li>
+          <li>Weekly and monthly logistics KPI reporting; supporting design and development of analytical dashboards.</li>
+          <li>Conducting economic viability analyses of last-mile partners including 3PL providers and internal Westwing Delivery Service.</li>
+          <li>Actively migrating Westwing Delivery Service SaaS operations into a structured <strong style="color:var(--text)">Snowflake database</strong> using SQL.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Working Student — Logistics & Data Management</div>
+          <div class="exp-date">Mär 2024 – Present</div>
+        </div>
+        <div class="exp-company">SCA Fulfillment Center · Reichertshofen, Deutschland</div>
+        <ul class="exp-bullets">
+          <li>Developed and maintained dashboards for daily parcel management, achieving a <strong style="color:var(--text)">15% reduction in delivery times</strong>.</li>
+          <li>Utilised analytical tools to track and optimise fulfillment, promotional materials, and e-commerce logistics processes.</li>
+          <li>Contributed to data-driven solutions for warehousing, order response times, and shop/ERP system integration.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-header">
+          <div class="exp-title">Data Manager</div>
+          <div class="exp-date">Jul 2021 – Dez 2023</div>
+        </div>
+        <div class="exp-company">Alpha German Education · Gujarat, Indien</div>
+        <ul class="exp-bullets">
+          <li>Collected, organised, and analysed data using Excel; performed EDA to identify trends and insights.</li>
+          <li>Developed dashboards and reports for effective data visualisation and executive decision-making.</li>
+          <li>Increased workflow efficiency by developing structured templates and improving data management processes.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label">Projects</div>
+    <h2>Selected Work</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-cat">Data Engineering · ETL</div>
+        <h3>SQL Data Warehouse — Medallion Architecture</h3>
+        <p class="project-desc">Built a fully functional data warehouse from scratch using Bronze/Silver/Gold layers. Implemented complete ETL pipeline transforming raw CRM and ERP CSV data into a star-schema analytics-ready model with Power BI reporting.</p>
+        <div class="project-tech">
+          <span class="tech-badge">SQL / T-SQL</span>
+          <span class="tech-badge">DBT</span>
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">ETL Pipeline</span>
+          <span class="tech-badge">Star Schema</span>
+          <span class="tech-badge">Window Functions</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-cat">Business Intelligence · Power BI</div>
+        <h3>Hospitality KPI Dashboard — $553M Revenue Analysis</h3>
+        <p class="project-desc">Interactive Power BI dashboard tracking 8 KPIs (RevPAR, ADR, Occupancy, Realization) across cities, room classes, and booking platforms. Identified top-performing properties and channels with week-over-week trend analysis.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Power BI</span>
+          <span class="tech-badge">DAX</span>
+          <span class="tech-badge">Power Query</span>
+          <span class="tech-badge">KPI Design</span>
+          <span class="tech-badge">Hospitality Analytics</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-cat">SQL Analytics · ESG</div>
+        <h3>Carbon Credit Effectiveness Analysis — German Companies</h3>
+        <p class="project-desc">Structured SQL database and analytical framework evaluating carbon credit usage across 15 major German companies. Built 8 analytical queries using CTEs, LAG window functions, and dependency ratio calculations.</p>
+        <div class="project-tech">
+          <span class="tech-badge">SQL</span>
+          <span class="tech-badge">CTEs</span>
+          <span class="tech-badge">Window Functions</span>
+          <span class="tech-badge">ESG Analytics</span>
+          <span class="tech-badge">KPI Design</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-cat">Business Intelligence · Tableau</div>
+        <h3>Credit Card Analytics Dashboard (Tableau)</h3>
+        <p class="project-desc">Two-layer Tableau dashboard for a credit card company tracking achievement rates, budget utilisation, and activity completion. Colour-coded traffic light system enabling real-time identification of underperforming areas.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Tableau</span>
+          <span class="tech-badge">KPI Monitoring</span>
+          <span class="tech-badge">RBM Framework</span>
+          <span class="tech-badge">Financial Analytics</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-cat">Machine Learning · Python</div>
+        <h3>Bitcoin Price Prediction — ML Pipeline</h3>
+        <p class="project-desc">End-to-end ML pipeline comparing Random Forest, Linear Regression, and KNN across 3 feature selection methods (Filter, RFE, LASSO). Random Forest achieved lowest RMSE across all 9 feature-model combinations.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">scikit-learn</span>
+          <span class="tech-badge">Random Forest</span>
+          <span class="tech-badge">LASSO / RFE</span>
+          <span class="tech-badge">pandas</span>
+          <span class="tech-badge">matplotlib</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-cat">AI Automation · LLM</div>
+        <h3>Automated Job Application System (n8n + LLM)</h3>
+        <p class="project-desc">Fully automated job application pipeline using n8n (Docker), integrating Notion triggers, local Ollama LLM, and OpenRouter for personalised cover letter generation. Human-in-the-loop revision agent with Google Docs output.</p>
+        <div class="project-tech">
+          <span class="tech-badge">n8n</span>
+          <span class="tech-badge">Docker</span>
+          <span class="tech-badge">Ollama</span>
+          <span class="tech-badge">OpenRouter</span>
+          <span class="tech-badge">Notion API</span>
+          <span class="tech-badge">Prompt Engineering</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-wrap">
+    <div class="section-label">Education</div>
+    <h2>Academic Background</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">M.Sc. Data Analytics</div>
+        <div class="edu-school">Berlin School of Business & Innovation</div>
+        <div class="edu-location">Berlin, Deutschland</div>
+        <div class="edu-date">Okt 2024 – Present</div>
+        <p class="edu-desc">Focusing on machine learning, statistical analysis, and business intelligence. Developing expertise in SQL, Tableau, Power BI, and predictive modelling through hands-on projects.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Sc. Information Technology</div>
+        <div class="edu-school">Sarvepalli Radhakrishnan University</div>
+        <div class="edu-location">Madhya Pradesh, Indien</div>
+        <div class="edu-date">Apr 2018 – Mär 2021</div>
+        <p class="edu-desc">Coursework in programming, database management, networking, and software development. Completed projects focused on data management and application development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-inner">
+      <div class="section-label">Contact</div>
+      <h2>Let's Connect</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8; max-width:520px;">
+        I'm actively looking for junior data analytics roles. If you have an interesting opportunity or just want to talk data, feel free to reach out.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:smitmayani123@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          smitmayani123@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/smitmayani/" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="tel:+4917664002406" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.88 12 19.79 19.79 0 0 1 1.85 3.4a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +49 176 6400 2406
+        </a>
+        <a href="https://github.com/smitmayani" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.021C22 6.484 17.523 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Smit Mayani · Built with HTML, CSS & passion for data</p>
+</footer>
+
+<script>
+  // Intersection observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'none';
+        e.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-card, .project-card, .edu-card, .timeline-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
